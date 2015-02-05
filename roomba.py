@@ -69,8 +69,30 @@ class myHandler(BaseHTTPRequestHandler):
 				environ={'REQUEST_METHOD':'POST',
 		                 'CONTENT_TYPE':self.headers['Content-Type'],
 			})
+			cmd = form["command"].value
+			print "Your command is: %s" % form["command"].value;
 
-			print "Your command is: %s" % form["command"].value
+			if cmd == "forward":
+				x.control()
+				x.forward()
+			elif cmd == "backward":
+				x.control()				
+				x.backward()
+			elif cmd == "stop":
+				x.control()
+				x.stop()
+			elif cmd == "spin left":
+				x.control()
+				x.spin_left()
+			elif cmd == "spin right":
+				x.control()
+				x.spin_right()	
+			elif cmd == "left":
+				x.control()
+				x.left()
+			elif cmd == "right":
+				x.control()
+				x.right()
 			f = open(curdir + sep + "roomba.html") 
 			self.send_response(200)
 			self.send_header('Content-type','text/html')
@@ -99,12 +121,12 @@ try:
     	x = RoombaAPI("/dev/ttyUSB0",57600)
         x.connect()
         x.start()
-        x.control()
-        x.clean()
-        time.sleep(5)
-        x.control()
-        x.spin_left()
-        time.sleep(5)
+        #x.control()
+        #x.clean()
+        #time.sleep(5)
+        #x.control()
+        #x.spin_left()
+        #time.sleep(5)
 
 	print "starting the web server"
 	

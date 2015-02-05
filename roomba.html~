@@ -13,7 +13,7 @@
 </form>
 
 
-<FORM ACTION="/send" METHOD="post">
+<FORM ACTION="formAction.jsp" METHOD="post">
              <INPUT TYPE="radio" NAME="move" VALUE="left" CHECKED>
              Left
             <BR>

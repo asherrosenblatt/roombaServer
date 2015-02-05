@@ -461,7 +461,7 @@ class RoombaAPI(object):
 if __name__ == "__main__":
 
     print "starting ..."
-    x = RoombaAPI("COM5",115200)
+    x = RoombaAPI("/dev/ttyUSB0",57600)
     try:
         
         x.connect()

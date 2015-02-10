@@ -42,8 +42,8 @@ class myHandler(BaseHTTPRequestHandler):
 				sendReply = True
 			if self.path.endswith(".bmp"):
 				print 'Take a picture'
-				img = cam.get_image()
-				pygame.image.save(img, "photo.bmp")
+				#img = cam.get_image()
+				#pygame.image.save(img, "photo.bmp")
 				mimetype='image/bmp'
 				sendReply = True
 
@@ -69,30 +69,29 @@ class myHandler(BaseHTTPRequestHandler):
 				environ={'REQUEST_METHOD':'POST',
 		                 'CONTENT_TYPE':self.headers['Content-Type'],
 			})
-			cmd = form["command"].value
-			print "Your command is: %s" % form["command"].value;
-
-			if cmd == "forward":
+			
+			tmpCmd = form["cmd"].value
+			if tmpCmd == "forward":
+				print "button forward pressed"
 				x.control()
 				x.forward()
-			elif cmd == "backward":
-				x.control()				
-				x.backward()
-			elif cmd == "stop":
+			elif tmpCmd == "stop":
+				print "button stopped pressed"
 				x.control()
 				x.stop()
-			elif cmd == "spin left":
+			elif tmpCmd == "backward":
+				print "button backward pressed"
 				x.control()
-				x.spin_left()
-			elif cmd == "spin right":
-				x.control()
-				x.spin_right()	
-			elif cmd == "left":
-				x.control()
-				x.left()
-			elif cmd == "right":
+				x.backward()
+			elif tmpCmd == "right":
+				print "button right pressed"
 				x.control()
 				x.right()
+			elif tmpCmd == "left":
+				print "button left pressed"
+				x.control()
+				x.left() 
+
 			f = open(curdir + sep + "roomba.html") 
 			self.send_response(200)
 			self.send_header('Content-type','text/html')
@@ -101,7 +100,7 @@ class myHandler(BaseHTTPRequestHandler):
 			f.close()			
 #			self.send_response(200)
 #			self.end_headers()
-			self.wfile.write("Command: %s !" % form["command"].value)
+			self.wfile.write("Last command: " + tmpCmd)
 			return
 
 try:

@@ -6,27 +6,15 @@
 <body>
   Command the Roomba to move</br>
   <img src="photo.bmp" alt="Grumpy Cat picture :)" height="100" />
-<form method="POST" action="/send">
-<label>Command: </label>
-<input type="text" name="command"/>
-<input type="submit" value="Send"/>
-</form>
-
 
 <FORM ACTION="/send" METHOD="post">
-             <INPUT TYPE="radio" NAME="move" VALUE="left" CHECKED>
-             Left
-            <BR>
-            <INPUT TYPE="radio" NAME="move" VALUE="right">
-             Right
-            <BR>
-            <INPUT TYPE="radio" NAME="move" VALUE="forward">
-             Forward
-            <BR>
-	    <INPUT TYPE="radio" NAME="move" VALUE="backward">
-             Backward
-	    <BR>
-            <INPUT TYPE="submit" VALUE="Send">
+	    <input type = "submit" name = 'cmd' value ="forward"/>
+<br>
+	    <input type = "submit" name = 'cmd' value ="left"/>
+	    <input type = "submit" name = 'cmd' value ="stop"/>
+	    <input type = "submit" name = 'cmd' value ="right"/>
+<br>
+	    <input type = "submit" name = 'cmd' value ="backward"/>
 </FORM>
 </body>
 </html>
